@@ -1,13 +1,5 @@
 package game
 
-type Player struct {
-	Name   string
-	Symbol string
-}
-type Board struct {
-	Grid [][]string
-	Size int
-}
 type Game struct {
 	Board   Board
 	PlayerX Player
@@ -16,9 +8,9 @@ type Game struct {
 }
 
 func NewGame(playerXName, playerOName string) Game {
-	playerX := NewPlayer(playerXName, symbol)
-	playerO := NewPlayer(playerOName, symbol)
-	board := NewBoard(size)
+	playerX := NewPlayer(playerXName, "X")
+	playerO := NewPlayer(playerOName, "O")
+	board := NewBoard(3)
 	return Game{
 		PlayerX: playerX,
 		PlayerO: playerO,
