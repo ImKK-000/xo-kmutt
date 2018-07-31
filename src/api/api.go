@@ -10,14 +10,21 @@ type Players struct {
 	PlayerX string `json:"playerX"`
 	PlayerO string `json:"playerO"`
 }
+type API struct {
+	Game game.Game
+}
 
-func StartGameHandler(w http.ResponseWriter, r *http.Request) {
+func (api API) GetInfoHandler(write http.ResponseWriter, request *http.Request) {
+	infoJson, _ := json.Marshal(api.Game.GetInfo())
+	write.Write(infoJson)
+}
+
+func (api *API) StartGameHandler(write http.ResponseWriter, request *http.Request) {
 	var players Players
-	err := json.NewDecoder(r.Body).Decode(&players)
+	err := json.NewDecoder(request.Body).Decode(&players)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
+		http.Error(write, err.Error(), http.StatusInternalServerError)
 	}
-	game.NewGame(players.PlayerX, players.PlayerO)
-	w.WriteHeader(http.StatusOK)
+	api.Game = game.NewGame(players.PlayerX, players.PlayerO)
+	write.WriteHeader(http.StatusOK)
 }

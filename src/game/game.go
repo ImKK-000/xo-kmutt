@@ -6,6 +6,12 @@ type Game struct {
 	PlayerO Player
 	TurnOf  Player
 }
+type InfoResponse struct {
+	Grid    [][]string `json:"grid"`
+	PlayerX Player     `json:"playerX"`
+	PlayerO Player     `json:"playerO"`
+	TurnOf  Player     `json:"turnOf"`
+}
 
 func NewGame(playerXName, playerOName string) Game {
 	playerX := NewPlayer(playerXName, "X")
@@ -16,6 +22,15 @@ func NewGame(playerXName, playerOName string) Game {
 		PlayerO: playerO,
 		Board:   board,
 		TurnOf:  playerX,
+	}
+}
+
+func (g Game) GetInfo() InfoResponse {
+	return InfoResponse{
+		Grid:    g.Board.Grid,
+		PlayerX: g.PlayerX,
+		PlayerO: g.PlayerO,
+		TurnOf:  g.TurnOf,
 	}
 }
 
