@@ -51,11 +51,11 @@ func Test_StartGameHandler_Input_PlayerX_Kad_PlayerO_Lek_Should_Be_Http_Status_2
 	players := `{"playerX" : "กาด", "playerO" : "เล็ก"}`
 	expectedStatus := 200
 
-	req := httptest.NewRequest("POST", "/xo/start", strings.NewReader(players))
-	w := httptest.NewRecorder()
+	request := httptest.NewRequest("POST", "/xo/start", strings.NewReader(players))
+	responseRecorder := httptest.NewRecorder()
 	api := API{}
-	api.StartGameHandler(w, req)
-	response := w.Result()
+	api.StartGameHandler(responseRecorder, request)
+	response := responseRecorder.Result()
 	actualStatus := response.StatusCode
 
 	if actualStatus != expectedStatus {
