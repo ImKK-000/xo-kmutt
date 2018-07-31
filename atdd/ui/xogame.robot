@@ -12,15 +12,15 @@ ${URL}    http://localhost:3000/xogame
     กรอกชื่อผู้เล่นคนที่สอง    เล็ก
     กดปุ่ม OK
     เข้าหน้าเล่นเกม
-    Trun ของ    กาด
+    Turn ของ    กาด
     เลือกช่อง    1    2    X
-    Trun ของ    เล็ก
+    Turn ของ    เล็ก
     เลือกช่อง    2    2    O
-    Trun ของ    กาด
+    Turn ของ    กาด
     เลือกช่อง    1    1    X
-    Trun ของ    เล็ก
+    Turn ของ    เล็ก
     เลือกช่อง    2    1    O
-    Trun ของ    กาด
+    Turn ของ    กาด
     เลือกช่อง    1    3    X
     แสดงผู้ชนะ    กาด
     กลับไปยังหน้าแรก
@@ -38,9 +38,9 @@ ${URL}    http://localhost:3000/xogame
     Click Button    id=startGame
 เข้าหน้าเล่นเกม
     Element Text Should Be    id=playerX    กาด
-Trun ของ
+Turn ของ
     [Arguments]    ${NAME}
-    Element Text Should Be    id=trunOf    ${NAME}
+    Element Text Should Be    id=turnOf    ${NAME}
 เลือกช่อง
     [Arguments]    ${ROW}    ${COLUMN}    ${SYMBOL}
     Click Element    id=grid-${ROW}-${COLUMN}
