@@ -41,3 +41,53 @@ func Test_NewGame_Input_PlayerX_Kad_PlayerO_Lek_Should_Be_Game_With_Board_And_Pl
 		}
 	}
 }
+
+func Test_GetInfo_Should_Be_Grid_And_Player_Name_kad_And_Player_Name_lek_And_Turnof_kad(t *testing.T) {
+	playerX := Player{
+		Name:   "กาด",
+		Symbol: "X",
+	}
+	playerO := Player{
+		Name:   "เล็ก",
+		Symbol: "O",
+	}
+	board := Board{
+		Grid: [][]string{
+			[]string{"X", "X", "X"},
+			[]string{"O", "O", ""},
+			[]string{"", "", ""},
+		},
+		Size: 3,
+	}
+	Game := Game{
+		Board:   board,
+		PlayerX: playerX,
+		PlayerO: playerO,
+		TurnOf:  playerX,
+	}
+	expected := InfoResponse{
+		Grid:    board.Grid,
+		PlayerX: playerX,
+		PlayerO: playerO,
+		TurnOf:  playerX,
+	}
+
+	actualInfo := Game.GetInfo()
+
+	if expected.PlayerX != actualInfo.PlayerX {
+		t.Errorf("expected PlayerX is %s but got %s", expected.PlayerX, actualInfo.PlayerX)
+	}
+	if expected.PlayerO != actualInfo.PlayerO {
+		t.Errorf("expected PlayerO is %s but got %s", expected.PlayerO, actualInfo.PlayerO)
+	}
+	if expected.TurnOf != actualInfo.TurnOf {
+		t.Errorf("expected TurnOf is %s but got %s", expected.TurnOf, actualInfo.TurnOf)
+	}
+	for row := 0; row < board.Size; row++ {
+		for column := 0; column < board.Size; column++ {
+			if actualInfo.Grid[row][column] != expected.Grid[row][column] {
+				t.Errorf("expected %v but got %v", expected, actualInfo)
+			}
+		}
+	}
+}
