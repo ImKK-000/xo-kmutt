@@ -18,3 +18,7 @@ func NewGame(playerXName, playerOName string) Game {
 		TurnOf:  playerX,
 	}
 }
+
+func CheckVertical(symbol string, row, column int) bool {
+	return true
+}
