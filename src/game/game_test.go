@@ -91,3 +91,14 @@ func Test_GetInfo_Should_Be_Grid_And_Player_Name_kad_And_Player_Name_lek_And_Tur
 		}
 	}
 }
+func Test_CheckVertical_Symbol_X_Row_1_Column_3_Should_Be_False(t *testing.T) {
+	symbol := "x"
+	row := 1
+	column := 3
+	expectedWin := false
+
+	actualWin := CheckVertical(symbol, row, column)
+	if actualWin != expectedWin {
+		t.Errorf("expected %v but got %v", expectedWin, actualWin)
+	}
+}

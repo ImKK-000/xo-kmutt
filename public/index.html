@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <title>XO GAME</title>
 </head>
 <body>
-    <form class="form-xo">
+    <div class="container">
         <h1 class="h3 mb-3 font-weight-normal">XO GAME</h1>
         <div class="row">
             <label>Player1 (X) : </label>
-        <input type="text" id="playerX" class="form-control" autofocus>
+            <input type="text" id="playerX" class="form-control" autofocus>
         </div>
         <div class="row">
             <label>Player2 (O) : </label>
-        <input type="text" id="playerO" class="form-control">
+            <input type="text" id="playerO" class="form-control">
         </div>
         <div class="row">
             <button id="startGame" class="btn btn-lg btn-primary btn-block" type="submit">OK</button>
         </div>
         
-    </form>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/startGame.js"></script>
 </body>
 </html>

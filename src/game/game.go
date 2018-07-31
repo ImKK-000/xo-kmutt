@@ -33,3 +33,7 @@ func (g Game) GetInfo() InfoResponse {
 		TurnOf:  g.TurnOf,
 	}
 }
+
+func CheckVertical(symbol string, row, column int) bool {
+	return true
+}
