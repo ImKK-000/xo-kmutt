@@ -14,17 +14,17 @@ type API struct {
 	Game game.Game
 }
 
-func (api API) GetInfoHandler(write http.ResponseWriter, request *http.Request) {
+func (api API) GetInfoHandler(writer http.ResponseWriter, request *http.Request) {
 	infoJson, _ := json.Marshal(api.Game.GetInfo())
-	write.Write(infoJson)
+	writer.Write(infoJson)
 }
 
-func (api *API) StartGameHandler(write http.ResponseWriter, request *http.Request) {
+func (api *API) StartGameHandler(writer http.ResponseWriter, request *http.Request) {
 	var players Players
 	err := json.NewDecoder(request.Body).Decode(&players)
 	if err != nil {
-		http.Error(write, err.Error(), http.StatusInternalServerError)
+		http.Error(writer, err.Error(), http.StatusInternalServerError)
 	}
 	api.Game = game.NewGame(players.PlayerX, players.PlayerO)
-	write.WriteHeader(http.StatusOK)
+	writer.WriteHeader(http.StatusOK)
 }
