@@ -16,6 +16,7 @@ func StartGameHandler(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&players)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 	game.NewGame(players.PlayerX, players.PlayerO)
 	w.WriteHeader(http.StatusOK)
